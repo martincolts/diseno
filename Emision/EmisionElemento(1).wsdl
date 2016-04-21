@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="EmitirRecibos">
+        <s:complexType>
+          <s:sequence>
+          	<s:element minOccurs="1" maxOccurs="1" name="fecha_sistema" type="s:string" />
+          	<s:element minOccurs="1" maxOccurs="1" name="iva_basico" type="s:double" />
+          	<s:element minOccurs="1" maxOccurs="1" name="iva_adicional" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="numero_a_utilizar" type="s:integer" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia1_reserva" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="mes1_reserva" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="anio1_reserva" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="importe_reserva" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="numero_provisorio" type="s:integer" />
+            <s:element minOccurs="1" maxOccurs="1" name="codigo_cliente" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="importe_descuento" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="desde_codigo" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="hasta_codigo" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="numero_cheque" type="s:integer" />
+            <s:element minOccurs="1" maxOccurs="1" name="efectivo" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="interdeposito" type="s:short" />
+          	<s:element minOccurs="1" maxOccurs="1" name="tipo" type="s:short" />
+          	<s:element minOccurs="1" maxOccurs="1" name="codigo" type="s:short" />
+          	<s:element minOccurs="1" maxOccurs="1" name="tipo_calculo" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="mes_declaracion" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="anio_declaracion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="sin_personal" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="importe_retenido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="retencion_ganancias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="neto_ganancias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="retencion_iva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="retencion_suss" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pago_anterior" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pago_efectivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pago_cheques_terceros" type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="kilos_brutos" type="s:short" />
+          	<s:element minOccurs="1" maxOccurs="1" name="propio" type="s:short" />
+          	<s:element minOccurs="1" maxOccurs="1" name="condicion_iva_transportista" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="parte1_cuit" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="parte2_cuit" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="parte3_cuit" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="domicilio_transportista" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="provincia_transportista" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nombre_transportista" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="primera_carta_porte_libre" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="localidad_destino" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="partido_destino" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="provincia_destino" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EmitirRecibosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmitirRecibosResult" type="tns:DatosRecibo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosRecibo">
+        <s:sequence>
+       	  <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
+       	  <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
+       	  <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+       	  <s:element minOccurs="0" maxOccurs="1" name="dia_vencimiento" type="s:short" />
+       	  <s:element minOccurs="0" maxOccurs="1" name="mes_vencimiento" type="s:short" />
+       	  <s:element minOccurs="0" maxOccurs="1" name="anio_vencimiento" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="ejemplar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nro_direccion" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="localidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="provincia" type="s:string" />
+     <s:element minOccurs="0" maxOccurs="1" name="nombre_producto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo_producto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo_producto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="factura_numero" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="kilos_brutos" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="kilos_tara" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="direccion_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="localidad_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="provincia_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cuit_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="condicion_iva" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cuit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo_comprobante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="fecha_comprobante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre_beneficiario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="concepto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe_neto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="importe_iva" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="comentario_iva" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="importe_bruto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="numero" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="importe_ganancias" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="comentario_ganancias" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="importe_total_retenciones" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="importe_anterior" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="detalles_propios" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="importe_propios" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="total_pagado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pagos_acumulados" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="retenciones" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="numero_retencion" type="s:integer" />
+          <s:element minOccurs="1" maxOccurs="1" name="porcentaje_exento" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="lugar_entrega" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="patente_camion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="patente_acoplado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="empresa_transportista" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="domicilio_transportista" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="provincia_transportista" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="condicion_iva_transportista" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cuit_transportista" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosRecibo" nillable="true" type="tns:DatosRecibo" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EmitirRecibosSoapIn">
+    <wsdl:part name="parameters" element="tns:EmitirRecibos" />
+  </wsdl:message>
+  <wsdl:message name="EmitirRecibosSoapOut">
+    <wsdl:part name="parameters" element="tns:EmitirRecibosResponse" />
+  </wsdl:message>
+  <wsdl:message name="EmitirRecibosHttpGetIn">
+    <wsdl:part name="fecha_sistema" type="s:string" />
+    <wsdl:part name="iva_basico" type="s:double" />
+    <wsdl:part name="iva_adicional" type="s:double" />
+    <wsdl:part name="numero_a_utilizar" type="s:integer" />
+    <wsdl:part name="dia1_reserva" type="s:short" />
+    <wsdl:part name="mes1_reserva" type="s:short" />
+    <wsdl:part name="anio1_reserva" type="s:short" />
+    <wsdl:part name="importe_reserva" type="s:double" />
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="importe_descuento" type="s:double" />
+    <wsdl:part name="desde_codigo" type="s:short" />
+    <wsdl:part name="hasta_codigo" type="s:short" />
+    <wsdl:part name="numero_cheque" type="s:integer" />
+    <wsdl:part name="efectivo" type="s:short" />
+    <wsdl:part name="interdeposito" type="s:short" />    <wsdl:part name="tipo" type="s:short" />
+    <wsdl:part name="codigo" type="s:short" />
+    <wsdl:part name="tipo_calculo" type="s:short" />
+    <wsdl:part name="mes_declaracion" type="s:short" />
+    <wsdl:part name="anio_declaracion" type="s:short" />
+    <wsdl:part name="sin_personal" type="s:short" />
+    <wsdl:part name="importe_retenido" type="s:string" />
+    <wsdl:part name="retencion_ganancias" type="s:string" />
+    <wsdl:part name="neto_ganancias" type="s:string" />
+    <wsdl:part name="retencion_iva" type="s:string" />
+    <wsdl:part name="retencion_suss" type="s:string" />
+    <wsdl:part name="pago_anterior" type="s:string" />
+    <wsdl:part name="pago_efectivo" type="s:string" />
+    <wsdl:part name="pago_cheques_terceros" type="s:string" />
+    <wsdl:part name="kilos_brutos" type="s:short" />
+    <wsdl:part name="propio" type="s:short" />
+    <wsdl:part name="condicion_iva_transportista" type="s:string" />
+    <wsdl:part name="parte1_cuit" type="s:short" />
+    <wsdl:part name="parte2_cuit" type="s:short" />
+    <wsdl:part name="parte3_cuit" type="s:short" />
+    <wsdl:part name="domicilio_transportista" type="s:string" />
+    <wsdl:part name="provincia_transportista" type="s:string" />
+    <wsdl:part name="nombre_transportista" type="s:string" />
+    <wsdl:part name="primera_carta_porte_libre" type="s:short" />
+    <wsdl:part name="localidad_destino" type="s:string" />
+    <wsdl:part name="partido_destino" type="s:short" />
+    <wsdl:part name="provincia_destino" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="EmitirRecibosHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosRecibo" />
+  </wsdl:message>
+  <wsdl:message name="EmitirRecibosHttpPostIn">
+    <wsdl:part name="fecha_sistema" type="s:string" />
+    <wsdl:part name="iva_basico" type="s:double" />
+    <wsdl:part name="iva_adicional" type="s:double" />
+    <wsdl:part name="numero_a_utilizar" type="s:integer" />
+    <wsdl:part name="dia1_reserva" type="s:short" />
+    <wsdl:part name="mes1_reserva" type="s:short" />
+    <wsdl:part name="anio1_reserva" type="s:short" />
+    <wsdl:part name="importe_reserva" type="s:double" />
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="importe_descuento" type="s:double" />
+    <wsdl:part name="desde_codigo" type="s:short" />
+    <wsdl:part name="hasta_codigo" type="s:short" />
+    <wsdl:part name="numero_cheque" type="s:integer" />
+    <wsdl:part name="efectivo" type="s:short" />
+    <wsdl:part name="interdeposito" type="s:short" />
+    <wsdl:part name="tipo" type="s:short" />
+    <wsdl:part name="codigo" type="s:short" />
+    <wsdl:part name="tipo_calculo" type="s:short" />
+    <wsdl:part name="mes_declaracion" type="s:short" />
+    <wsdl:part name="anio_declaracion" type="s:short" />
+    <wsdl:part name="sin_personal" type="s:short" />
+    <wsdl:part name="importe_retenido" type="s:string" />
+    <wsdl:part name="retencion_ganancias" type="s:string" />
+    <wsdl:part name="neto_ganancias" type="s:string" />
+    <wsdl:part name="retencion_iva" type="s:string" />
+    <wsdl:part name="retencion_suss" type="s:string" />
+    <wsdl:part name="pago_anterior" type="s:string" />
+    <wsdl:part name="pago_efectivo" type="s:string" />
+    <wsdl:part name="pago_cheques_terceros" type="s:string" />
+    <wsdl:part name="kilos_brutos" type="s:short" />
+    <wsdl:part name="propio" type="s:short" />
+    <wsdl:part name="condicion_iva_transportista" type="s:string" />
+    <wsdl:part name="parte1_cuit" type="s:short" />
+    <wsdl:part name="parte2_cuit" type="s:short" />
+    <wsdl:part name="parte3_cuit" type="s:short" />
+    <wsdl:part name="domicilio_transportista" type="s:string" />
+    <wsdl:part name="provincia_transportista" type="s:string" />
+    <wsdl:part name="nombre_transportista" type="s:string" />
+    <wsdl:part name="primera_carta_porte_libre" type="s:short" />
+    <wsdl:part name="localidad_destino" type="s:string" />
+    <wsdl:part name="partido_destino" type="s:short" />
+    <wsdl:part name="provincia_destino" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="EmitirRecibosHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosRecibo" />
+  </wsdl:message>
+  <wsdl:portType name="EmisionRecibosElementoSoap">
+    <wsdl:operation name="EmitirRecibos">
+      <wsdl:input message="tns:EmitirRecibosSoapIn" />
+      <wsdl:output message="tns:EmitirRecibosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EmisionRecibosElementoHttpGet">
+    <wsdl:operation name="EmitirRecibos">
+      <wsdl:input message="tns:EmitirRecibosHttpGetIn" />
+      <wsdl:output message="tns:EmitirRecibosHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EmisionRecibosElementoHttpPost">
+    <wsdl:operation name="EmitirRecibos">
+      <wsdl:input message="tns:EmitirRecibosHttpPostIn" />
+      <wsdl:output message="tns:EmitirRecibosHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmisionRecibosElementoSoap" type="tns:EmisionRecibosElementoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EmitirRecibos">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/EmitirRecibos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EmisionRecibosElementoSoap12" type="tns:EmisionRecibosElementoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EmitirRecibos">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/EmitirRecibos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EmisionRecibosElementoHttpGet" type="tns:EmisionRecibosElementoHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="EmitirRecibos">
+      <http:operation location="/EmitirRecibos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EmisionRecibosElementoHttpPost" type="tns:EmisionRecibosElementoHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="EmitirRecibos">
+      <http:operation location="/EmitirRecibos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmisionRecibosElemento">
+    <wsdl:port name="EmisionRecibosElementoSoap" binding="tns:EmisionRecibosElementoSoap">
+      <soap:address location="http://localhost:1390/EmisionRecibosElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EmisionRecibosElementoSoap12" binding="tns:EmisionRecibosElementoSoap12">
+      <soap12:address location="http://localhost:1390/EmisionRecibosElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EmisionRecibosElementoHttpGet" binding="tns:EmisionRecibosElementoHttpGet">
+      <http:address location="http://localhost:1390/EmisionRecibosElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EmisionRecibosElementoHttpPost" binding="tns:EmisionRecibosElementoHttpPost">
+      <http:address location="http://localhost:1390/EmisionRecibosElemento.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
