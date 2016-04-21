@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="AltaElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_hijo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tasa_iva" type="s:float" />
+	    <s:element minOccurs="1" maxOccurs="1" name="codigo_elemento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nro_direccion_elemento" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="localidad_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="provincia_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_provincia_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_postal" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="telefono_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cuit_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ing_brutos_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="ultima_oper_elemento" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="condicion_iva_elemento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_documento_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_documento_elemento" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona_flete_elemento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="credito_elemento" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="indice_Elemento" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="acepta_Elemento" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia_librocom" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes_librocom" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_librocom" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_comprobante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serie_comprobante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="letra_comprobante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="iva_basico" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="iva_retenido" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="forma_pago" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="con_banco_reserva" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="leyenda_banco_reserva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="controlador_fiscal_si_reserva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cai_reserva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fecha_vencimiento_reserva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cantidad_hojas_reserva" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="tasa_iva_reserva" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="importacion_si" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_despacho_reserva" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_aduana_reserva" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_destino_reserva" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_despacho_reserva" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="dc_despacho_reserva" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="iva_basico" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="dia_despacho" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes_despacho" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_despacho" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="dia_vencimiento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes_vencimiento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_vencimiento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="texto_condicion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_vencimiento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="dias_pago" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="texto_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="importe" type="s:float" />
+
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AltaElementoResult" type="tns:DatosAlta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosAlta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="altaExitosa" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosAlta" nillable="true" type="tns:DatosAlta" />
+      <s:element name="ModificacionElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigo_elemento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_hijo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tasa_iva" type="s:float" />
+<s:element minOccurs="1" maxOccurs="1" name="codigo_elemento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nro_direccion_elemento" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="localidad_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="provincia_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_provincia_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_postal" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="telefono_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cuit_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ing_brutos_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="ultima_oper_elemento" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="condicion_iva_elemento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_documento_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_documento_elemento" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona_flete_elemento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="credito_elemento" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="codigo_condicion" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="texto_condicion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_vencimiento" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="dias_pago" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="texto_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="importe" type="s:float" />
+
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificacionElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificacionElementoResult" type="tns:DatosModificacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosModificacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="modificacionExitosa" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosModificacion" nillable="true" type="tns:DatosModificacion" />
+      <s:element name="BajaElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigo_elemento" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia_librocom" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes_librocom" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_librocom" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_comprobante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serie_comprobante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="letra_comprobante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BajaElementoResult" type="tns:DatosBaja" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosBaja">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="bajaExitosa" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosBaja" nillable="true" type="tns:DatosBaja" />
+      <s:element name="ConsultaTelefono">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tipo_busqueda" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="localidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaTelefonoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaTelefonoResult" type="tns:DatosConsulta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosConsulta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="localidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigo_postal" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosConsulta" nillable="true" type="tns:DatosConsulta" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AltaElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaElemento" />
+  </wsdl:message>
+  <wsdl:message name="AltaElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaElementoHttpGetIn">
+    <wsdl:part name="codigo_elemento" type="s:short" />
+    <wsdl:part name="apellido_elemento" type="s:string" />
+    <wsdl:part name="nombre_elemento" type="s:string" />
+    <wsdl:part name="nombre_hijo" type="s:string" />
+    <wsdl:part name="tasa_iva" type="s:float" />
+    <wsdl:part name="direccion_elemento" type="s:string" />
+    <wsdl:part name="nro_direccion_elemento" type="s:integer" />
+    <wsdl:part name="localidad_elemento" type="s:string" />
+    <wsdl:part name="provincia_elemento" type="s:string" />
+    <wsdl:part name="codigo_provincia_elemento" type="s:string" />
+    <wsdl:part name="codigo_postal" type="s:short" />
+    <wsdl:part name="telefono_elemento" type="s:string" />
+    <wsdl:part name="cuit_elemento" type="s:string" />
+    <wsdl:part name="ing_brutos_elemento" type="s:string" />
+    <wsdl:part name="zona" type="s:short" />
+    <wsdl:part name="ultima_oper_elemento" type="s:integer" />
+    <wsdl:part name="condicion_iva_elemento" type="s:short" />
+    <wsdl:part name="tipo_documento_elemento" type="s:string" />
+    <wsdl:part name="numero_documento_elemento" type="s:long" />
+    <wsdl:part name="zona_flete_elemento" type="s:short" />
+    <wsdl:part name="credito_elemento" type="s:long" />
+    <wsdl:part name="indice_Elemento" type="s:short" />
+    <wsdl:part name="acepta_Elemento" type="s:float" />
+    <wsdl:part name="dia_librocom" type="s:short" />
+    <wsdl:part name="mes_librocom" type="s:short" />
+    <wsdl:part name="anio_librocom" type="s:short" />
+    <wsdl:part name="tipo_comprobante" type="s:string" />
+    <wsdl:part name="serie_comprobante" type="s:string" />
+    <wsdl:part name="letra_comprobante" type="s:string" />
+    <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="tipo_cliente" type="s:string" />
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="cuenta" type="s:short" />
+    <wsdl:part name="iva_basico" type="s:double" />
+    <wsdl:part name="iva_retenido" type="s:double" />
+    <wsdl:part name="forma_pago" type="s:short" />
+    <wsdl:part name="con_banco_reserva" type="s:short" />
+    <wsdl:part name="leyenda_banco_reserva" type="s:string" />
+    <wsdl:part name="controlador_fiscal_si_reserva" type="s:string" />
+    <wsdl:part name="cai_reserva" type="s:string" />
+    <wsdl:part name="fecha_vencimiento_reserva" type="s:string" />
+    <wsdl:part name="cantidad_hojas_reserva" type="s:integer" />
+    <wsdl:part name="tasa_iva_reserva" type="s:double" />
+    <wsdl:part name="importacion_si" type="s:short" />
+    <wsdl:part name="anio_despacho_reserva" type="s:short" />
+    <wsdl:part name="codigo_aduana_reserva" type="s:short" />
+    <wsdl:part name="codigo_destino_reserva" type="s:short" />
+    <wsdl:part name="numero_despacho_reserva" type="s:integer" />
+    <wsdl:part name="dc_despacho_reserva" type="s:short" />
+    <wsdl:part name="dia_despacho" type="s:short" />
+    <wsdl:part name="mes_despacho" type="s:short" />
+    <wsdl:part name="anio_despacho" type="s:short" />
+    <wsdl:part name="dia_vencimiento" type="s:short" />
+    <wsdl:part name="mes_vencimiento" type="s:short" />
+    <wsdl:part name="anio_vencimiento" type="s:short" />
+    <wsdl:part name="texto_condicion" type="s:string" />
+    <wsdl:part name="tipo_vencimiento" type="s:short" />
+    <wsdl:part name="dias_pago" type="s:integer" />
+    <wsdl:part name="texto_elemento" type="s:string" />
+    <wsdl:part name="importe" type="s:float" />
+
+  </wsdl:message>
+  <wsdl:message name="AltaElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosAlta" />
+  </wsdl:message>
+  <wsdl:message name="AltaElementoHttpPostIn">
+    <wsdl:part name="codigo_elemento" type="s:short" />
+    <wsdl:part name="apellido_elemento" type="s:string" />
+    <wsdl:part name="nombre_elemento" type="s:string" />
+    <wsdl:part name="nombre_hijo" type="s:string" />
+    <wsdl:part name="tasa_iva" type="s:float" />
+    <wsdl:part name="direccion_elemento" type="s:string" />
+    <wsdl:part name="nro_direccion_elemento" type="s:integer" />
+    <wsdl:part name="localidad_elemento" type="s:string" />
+    <wsdl:part name="provincia_elemento" type="s:string" />
+    <wsdl:part name="codigo_provincia_elemento" type="s:string" />
+    <wsdl:part name="codigo_postal" type="s:short" />
+    <wsdl:part name="telefono_elemento" type="s:string" />
+    <wsdl:part name="cuit_elemento" type="s:string" />
+    <wsdl:part name="ing_brutos_elemento" type="s:string" />
+    <wsdl:part name="zona" type="s:short" />
+    <wsdl:part name="ultima_oper_elemento" type="s:integer" />
+    <wsdl:part name="condicion_iva_elemento" type="s:short" />
+    <wsdl:part name="tipo_documento_elemento" type="s:string" />
+    <wsdl:part name="numero_documento_elemento" type="s:long" />
+    <wsdl:part name="zona_flete_elemento" type="s:short" />
+    <wsdl:part name="credito_elemento" type="s:long" />
+    <wsdl:part name="indice_Elemento" type="s:short" />
+    <wsdl:part name="acepta_Elemento" type="s:float" />
+    <wsdl:part name="dia_librocom" type="s:short" />
+    <wsdl:part name="mes_librocom" type="s:short" />
+    <wsdl:part name="anio_librocom" type="s:short" />
+    <wsdl:part name="tipo_comprobante" type="s:string" />
+    <wsdl:part name="serie_comprobante" type="s:string" />
+    <wsdl:part name="letra_comprobante" type="s:string" />
+    <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="tipo_cliente" type="s:string" />
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="cuenta" type="s:short" />
+    <wsdl:part name="iva_basico" type="s:double" />
+    <wsdl:part name="iva_retenido" type="s:double" />
+    <wsdl:part name="forma_pago" type="s:short" />
+    <wsdl:part name="con_banco_reserva" type="s:short" />
+    <wsdl:part name="leyenda_banco_reserva" type="s:string" />
+    <wsdl:part name="controlador_fiscal_si_reserva" type="s:string" />
+    <wsdl:part name="cai_reserva" type="s:string" />
+    <wsdl:part name="fecha_vencimiento_reserva" type="s:string" />
+    <wsdl:part name="cantidad_hojas_reserva" type="s:integer" />
+    <wsdl:part name="tasa_iva_reserva" type="s:double" />
+    <wsdl:part name="importacion_si" type="s:short" />
+    <wsdl:part name="anio_despacho_reserva" type="s:short" />
+    <wsdl:part name="codigo_aduana_reserva" type="s:short" />
+    <wsdl:part name="codigo_destino_reserva" type="s:short" />
+    <wsdl:part name="numero_despacho_reserva" type="s:integer" />
+    <wsdl:part name="dc_despacho_reserva" type="s:short" />
+    <wsdl:part name="dia_despacho" type="s:short" />
+    <wsdl:part name="mes_despacho" type="s:short" />
+    <wsdl:part name="anio_despacho" type="s:short" />
+    <wsdl:part name="dia_vencimiento" type="s:short" />
+    <wsdl:part name="mes_vencimiento" type="s:short" />
+    <wsdl:part name="anio_vencimiento" type="s:short" />
+    <wsdl:part name="codigo_condicion" type="s:short" />
+    <wsdl:part name="texto_condicion" type="s:string" />
+    <wsdl:part name="tipo_vencimiento" type="s:short" />
+    <wsdl:part name="dias_pago" type="s:integer" />
+    <wsdl:part name="texto_elemento" type="s:string" />
+    <wsdl:part name="importe" type="s:float" />
+
+  </wsdl:message>
+  <wsdl:message name="AltaElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosAlta" />
+  </wsdl:message>
+  <wsdl:message name="ModificacionElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificacionElemento" />
+  </wsdl:message>
+  <wsdl:message name="ModificacionElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificacionElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificacionElementoHttpGetIn">
+    <wsdl:part name="codigo_elemento" type="s:short" />
+    <wsdl:part name="apellido_elemento" type="s:string" />
+    <wsdl:part name="nombre_elemento" type="s:string" />
+    <wsdl:part name="nombre_hijo" type="s:string" />
+    <wsdl:part name="tasa_iva" type="s:float" />
+    <wsdl:part name="direccion_elemento" type="s:string" />
+    <wsdl:part name="nro_direccion_elemento" type="s:integer" />
+    <wsdl:part name="localidad_elemento" type="s:string" />
+    <wsdl:part name="provincia_elemento" type="s:string" />
+    <wsdl:part name="codigo_provincia_elemento" type="s:string" />
+    <wsdl:part name="codigo_postal" type="s:short" />
+    <wsdl:part name="telefono_elemento" type="s:string" />
+    <wsdl:part name="cuit_elemento" type="s:string" />
+    <wsdl:part name="ing_brutos_elemento" type="s:string" />
+    <wsdl:part name="zona" type="s:short" />
+    <wsdl:part name="ultima_oper_elemento" type="s:integer" />
+    <wsdl:part name="condicion_iva_elemento" type="s:short" />
+    <wsdl:part name="tipo_documento_elemento" type="s:string" />
+    <wsdl:part name="numero_documento_elemento" type="s:long" />
+    <wsdl:part name="zona_flete_elemento" type="s:short" />
+    <wsdl:part name="credito_elemento" type="s:long" />
+    <wsdl:part name="texto_condicion" type="s:string" />
+    <wsdl:part name="tipo_vencimiento" type="s:short" />
+    <wsdl:part name="dias_pago" type="s:integer" />
+    <wsdl:part name="texto_elemento" type="s:string" />
+    <wsdl:part name="importe" type="s:float" />
+
+  </wsdl:message>
+  <wsdl:message name="ModificacionElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosModificacion" />
+  </wsdl:message>
+  <wsdl:message name="ModificacionElementoHttpPostIn">
+    <wsdl:part name="codigo_elemento" type="s:short" />
+    <wsdl:part name="apellido_elemento" type="s:string" />
+    <wsdl:part name="nombre_elemento" type="s:string" />
+    <wsdl:part name="nombre_hijo" type="s:string" />
+    <wsdl:part name="tasa_iva" type="s:float" />
+    <wsdl:part name="direccion_elemento" type="s:string" />
+    <wsdl:part name="nro_direccion_elemento" type="s:integer" />
+    <wsdl:part name="localidad_elemento" type="s:string" />
+    <wsdl:part name="provincia_elemento" type="s:string" />
+    <wsdl:part name="codigo_provincia_elemento" type="s:string" />
+    <wsdl:part name="codigo_postal" type="s:short" />
+    <wsdl:part name="telefono_elemento" type="s:string" />
+    <wsdl:part name="cuit_elemento" type="s:string" />
+    <wsdl:part name="ing_brutos_elemento" type="s:string" />
+    <wsdl:part name="zona" type="s:short" />
+    <wsdl:part name="ultima_oper_elemento" type="s:integer" />
+    <wsdl:part name="condicion_iva_elemento" type="s:short" />
+    <wsdl:part name="tipo_documento_elemento" type="s:string" />
+    <wsdl:part name="numero_documento_elemento" type="s:long" />
+    <wsdl:part name="zona_flete_elemento" type="s:short" />
+    <wsdl:part name="credito_elemento" type="s:long" />
+    <wsdl:part name="texto_condicion" type="s:string" />
+    <wsdl:part name="tipo_vencimiento" type="s:short" />
+    <wsdl:part name="dias_pago" type="s:integer" />
+    <wsdl:part name="texto_elemento" type="s:string" />
+    <wsdl:part name="importe" type="s:float" />
+
+  </wsdl:message>
+  <wsdl:message name="ModificacionElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosModificacion" />
+  </wsdl:message>
+   <wsdl:message name="BajaElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaElemento" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoHttpGetIn">
+    <wsdl:part name="codigo_elemento" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosBaja" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoHttpPostIn">
+    <wsdl:part name="dia_librocom" type="s:short" />
+    <wsdl:part name="mes_librocom" type="s:short" />
+    <wsdl:part name="anio_librocom" type="s:short" />
+    <wsdl:part name="tipo_comprobante" type="s:string" />
+    <wsdl:part name="serie_comprobante" type="s:string" />
+    <wsdl:part name="letra_comprobante" type="s:string" />
+    <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="tipo_cliente" type="s:string" />
+    <wsdl:part name="codigo_cliente" type="s:short" />
+   <wsdl:part name="codigo_elemento" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosBaja" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaTelefonoSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaTelefono" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaTelefonoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaTelefonoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaTelefonoHttpGetIn">
+    <wsdl:part name="tipo_busqueda" type="s:short" />
+    <wsdl:part name="nombre" type="s:string" />
+    <wsdl:part name="localidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaTelefonoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosConsulta" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaTelefonoHttpPostIn">
+    <wsdl:part name="tipo_busqueda" type="s:short" />
+    <wsdl:part name="nombre" type="s:string" />
+    <wsdl:part name="localidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaTelefonoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosConsulta" />
+  </wsdl:message>
+  <wsdl:portType name="AbmElementosSoap">
+    <wsdl:operation name="AltaElemento">
+      <wsdl:input message="tns:AltaElementoSoapIn" />
+      <wsdl:output message="tns:AltaElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificacionElemento">
+      <wsdl:input message="tns:ModificacionElementoSoapIn" />
+      <wsdl:output message="tns:ModificacionElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <wsdl:input message="tns:BajaElementoSoapIn" />
+      <wsdl:output message="tns:BajaElementoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AbmElementosHttpGet">
+    <wsdl:operation name="AltaElemento">
+      <wsdl:input message="tns:AltaElementoHttpGetIn" />
+      <wsdl:output message="tns:AltaElementoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificacionElemento">
+      <wsdl:input message="tns:ModificacionElementoHttpGetIn" />
+      <wsdl:output message="tns:ModificacionElementoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <wsdl:input message="tns:BajaElementoHttpGetIn" />
+      <wsdl:output message="tns:BajaElementoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AbmElementosHttpPost">
+    <wsdl:operation name="AltaElemento">
+      <wsdl:input message="tns:AltaElementoHttpPostIn" />
+      <wsdl:output message="tns:AltaElementoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificacionElemento">
+      <wsdl:input message="tns:ModificacionElementoHttpPostIn" />
+      <wsdl:output message="tns:ModificacionElementoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <wsdl:input message="tns:BajaElementoHttpPostIn" />
+      <wsdl:output message="tns:BajaElementoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AbmElementosSoap" type="tns:AbmElementosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AltaElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/AltaElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificacionElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/ModificacionElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/BajaElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AbmElementosSoap12" type="tns:AbmElementosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AltaElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/AltaElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificacionElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/ModificacionElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/BajaElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AbmElementosHttpGet" type="tns:AbmElementosHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AltaElemento">
+      <http:operation location="/AltaElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificacionElemento">
+      <http:operation location="/ModificacionElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <http:operation location="/BajaElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AbmElementosHttpPost" type="tns:AbmElementosHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AltaElemento">
+      <http:operation location="/AltaElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificacionElemento">
+      <http:operation location="/ModificacionElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <http:operation location="/BajaElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AbmElementos">
+    <wsdl:port name="AbmElementosSoap" binding="tns:AbmElementosSoap">
+      <soap:address location="http://localhost:1390/AbmElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AbmElementosSoap12" binding="tns:AbmElementosSoap12">
+      <soap12:address location="http://localhost:1390/AbmElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AbmElementosHttpGet" binding="tns:AbmElementosHttpGet">
+      <http:address location="http://localhost:1390/AbmElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AbmElementosHttpPost" binding="tns:AbmElementosHttpPost">
+      <http:address location="http://localhost:1390/AbmElementos.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

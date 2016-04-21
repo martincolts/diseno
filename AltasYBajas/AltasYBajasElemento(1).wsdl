@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="AltaElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigo_cliente" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="cantidad" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_zona" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="arma_numero" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="desde_talonario" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="hasta_talonario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AltaElementoResult" type="tns:DatosAlta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosAlta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="altaExitosa" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosAlta" nillable="true" type="tns:DatosAlta" />
+      <s:element name="BajaElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigo_cliente" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="desde_talonario" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="hasta_talonario" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BajaElementoResult" type="tns:DatosBaja" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosBaja">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="bajaExitosa" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosBaja" nillable="true" type="tns:DatosBaja" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AltaElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:AltaElemento" />
+  </wsdl:message>
+  <wsdl:message name="AltaElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:AltaElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AltaElementoHttpGetIn">
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="dia" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="cantidad" type="s:long" />
+    <wsdl:part name="codigo_zona" type="s:short" />
+    <wsdl:part name="arma_numero" type="s:long" />
+    <wsdl:part name="desde_talonario" type="s:long" />
+    <wsdl:part name="hasta_talonario" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="AltaElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosAlta" />
+  </wsdl:message>
+  <wsdl:message name="AltaElementoHttpPostIn">
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="dia" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="cantidad" type="s:long" />
+    <wsdl:part name="codigo_zona" type="s:short" />
+    <wsdl:part name="arma_numero" type="s:long" />
+    <wsdl:part name="desde_talonario" type="s:long" />
+    <wsdl:part name="hasta_talonario" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="AltaElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosAlta" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaElemento" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoHttpGetIn">
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="dia" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="desde_talonario" type="s:long" />
+    <wsdl:part name="hasta_talonario" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosBaja" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoHttpPostIn">
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="dia" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="desde_talonario" type="s:long" />
+    <wsdl:part name="hasta_talonario" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="BajaElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosBaja" />
+  </wsdl:message>
+  <wsdl:portType name="AltasYBajasElementosSoap">
+    <wsdl:operation name="AltaElemento">
+      <wsdl:input message="tns:AltaElementoSoapIn" />
+      <wsdl:output message="tns:AltaElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <wsdl:input message="tns:BajaElementoSoapIn" />
+      <wsdl:output message="tns:BajaElementoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AltasYBajasElementosHttpGet">
+    <wsdl:operation name="AltaElemento">
+      <wsdl:input message="tns:AltaElementoHttpGetIn" />
+      <wsdl:output message="tns:AltaElementoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <wsdl:input message="tns:BajaElementoHttpGetIn" />
+      <wsdl:output message="tns:BajaElementoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AltasYBajasElementosHttpPost">
+    <wsdl:operation name="AltaElemento">
+      <wsdl:input message="tns:AltaElementoHttpPostIn" />
+      <wsdl:output message="tns:AltaElementoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <wsdl:input message="tns:BajaElementoHttpPostIn" />
+      <wsdl:output message="tns:BajaElementoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AltasYBajasElementosSoap" type="tns:AltasYBajasElementosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AltaElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/AltaElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/BajaElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AltasYBajasElementosSoap12" type="tns:AltasYBajasElementosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AltaElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/AltaElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/BajaElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AltasYBajasElementosHttpGet" type="tns:AltasYBajasElementosHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AltaElemento">
+      <http:operation location="/AltaElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <http:operation location="/BajaElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AltasYBajasElementosHttpPost" type="tns:AltasYBajasElementosHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AltaElemento">
+      <http:operation location="/AltaElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaElemento">
+      <http:operation location="/BajaElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AltasYBajasElementos">
+    <wsdl:port name="AltasYBajasElementosSoap" binding="tns:AltasYBajasElementosSoap">
+      <soap:address location="http://localhost:1390/AltasYBajasElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AltasYBajasElementosSoap12" binding="tns:AltasYBajasElementosSoap12">
+      <soap12:address location="http://localhost:1390/AltasYBajasElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AltasYBajasElementosHttpGet" binding="tns:AltasYBajasElementosHttpGet">
+      <http:address location="http://localhost:1390/AltasYBajasElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AltasYBajasElementosHttpPost" binding="tns:AltasYBajasElementosHttpPost">
+      <http:address location="http://localhost:1390/AltasYBajasElementos.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="VerificarElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="campo_1" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="campo_2" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="campo_3" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="cuit_padron" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerificarElementoResult" type="tns:DatosVerificacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosVerificacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="verificacionCorrecta" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosVerificacion" nillable="true" type="tns:DatosVerificacion" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VerificarElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarElemento" />
+  </wsdl:message>
+  <wsdl:message name="VerificarElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerificarElementoHttpGetIn">
+    <wsdl:part name="campo_1" type="s:short" />
+    <wsdl:part name="campo_2" type="s:short" />
+    <wsdl:part name="campo_3" type="s:short" />
+    <wsdl:part name="cuit_padron" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VerificarElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosVerificacion" />
+  </wsdl:message>
+  <wsdl:message name="VerificarElementoHttpPostIn">
+    <wsdl:part name="campo_1" type="s:short" />
+    <wsdl:part name="campo_2" type="s:short" />
+    <wsdl:part name="campo_3" type="s:short" />
+    <wsdl:part name="cuit_padron" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VerificarElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosVerificacion" />
+  </wsdl:message>
+  <wsdl:portType name="VerificaElementoProveedoresAcreedoresClientesSoap">
+    <wsdl:operation name="VerificarElemento">
+      <wsdl:input message="tns:VerificarElementoSoapIn" />
+      <wsdl:output message="tns:VerificarElementoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="VerificaElementoProveedoresAcreedoresClientesHttpGet">
+    <wsdl:operation name="VerificarElemento">
+      <wsdl:input message="tns:VerificarElementoHttpGetIn" />
+      <wsdl:output message="tns:VerificarElementoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="VerificaElementoProveedoresAcreedoresClientesHttpPost">
+    <wsdl:operation name="VerificarElemento">
+      <wsdl:input message="tns:VerificarElementoHttpPostIn" />
+      <wsdl:output message="tns:VerificarElementoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VerificaElementoProveedoresAcreedoresClientesSoap" type="tns:VerificaElementoProveedoresAcreedoresClientesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerificarElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/VerificarElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VerificaElementoProveedoresAcreedoresClientesSoap12" type="tns:VerificaElementoProveedoresAcreedoresClientesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerificarElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/VerificarElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VerificacionEstadoArchivoFacturacionHttpGet" type="tns:VerificacionEstadoArchivoFacturacionHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="VerificarEstadoArchivoFacturacion">
+      <http:operation location="/VerificarEstadoArchivoFacturacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VerificacionEstadoArchivoFacturacionHttpPost" type="tns:VerificacionEstadoArchivoFacturacionHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="VerificarEstadoArchivoFacturacion">
+      <http:operation location="/VerificarEstadoArchivoFacturacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VerificacionEstadoArchivoFacturacion">
+    <wsdl:port name="VerificacionEstadoArchivoFacturacionSoap" binding="tns:VerificacionEstadoArchivoFacturacionSoap">
+      <soap:address location="http://localhost:1390/VerificacionEstadoArchivoFacturacion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VerificacionEstadoArchivoFacturacionSoap12" binding="tns:VerificacionEstadoArchivoFacturacionSoap12">
+      <soap12:address location="http://localhost:1390/VerificacionEstadoArchivoFacturacion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VerificacionEstadoArchivoFacturacionHttpGet" binding="tns:VerificacionEstadoArchivoFacturacionHttpGet">
+      <http:address location="http://localhost:1390/VerificacionEstadoArchivoFacturacion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VerificacionEstadoArchivoFacturacionHttpPost" binding="tns:VerificacionEstadoArchivoFacturacionHttpPost">
+      <http:address location="http://localhost:1390/VerificacionEstadoArchivoFacturacion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

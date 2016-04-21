@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="ObtenerBalanceElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dia_desde" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes_desde" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_desde" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="dia_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="acepta_nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo_listado" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona_desde" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="wempresa" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo_trabajo" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="acepta_fecha" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_desde" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="letra_desde" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="letra_hasta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerBalanceElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerBalanceElementoResult" type="tns:ArrayOfDatosBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDatosBalance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DatosBalance" nillable="true" type="tns:DatosBalance" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DatosBalance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="dia" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="mes" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="anio" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="alfa_comprobante" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="tipo_comprobante" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="numero_comprobante" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="observaciones" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bolsas_descuentos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre_bolsas_descuentos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="precio_bolsas_descuentos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="condicion_iva_descuentos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="zona_cuentas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zona_deudas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zona_facturas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comentarios" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="numero_recibo" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe_deudas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe_cuentas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="diferencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="debe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="haber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_debe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_haber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="zona_cliente" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="nombre_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="total_deudas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="total_cuentas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="neto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="facturas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="debitos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creditos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="marca_anulado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_anterior" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_recibos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_asientos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_facturas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_creditos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_recibos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfDatosBalance" nillable="true" type="tns:ArrayOfDatosBalance" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerBalanceElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerBalanceElemento" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerBalanceElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerBalanceElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerBalanceElementoHttpGetIn">
+    <wsdl:part name="dia_desde" type="s:short" />
+    <wsdl:part name="mes_desde" type="s:short" />
+    <wsdl:part name="anio_desde" type="s:short" />
+    <wsdl:part name="dia_hasta" type="s:short" />
+    <wsdl:part name="mes_hasta" type="s:short" />
+    <wsdl:part name="anio_hasta" type="s:short" />
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="acepta_nombre" type="s:string" />
+	<wsdl:part name="acepta_fecha" type="s:integer" />
+    <wsdl:part name="tipo_listado" type="s:short" />
+    <wsdl:part name="codigo_desde" type="s:short" />
+    <wsdl:part name="codigo_hasta" type="s:short" />
+    <wsdl:part name="zona_desde" type="s:short" />
+    <wsdl:part name="zona_hasta" type="s:short" />
+    <wsdl:part name="letra_desde" type="s:string" />
+    <wsdl:part name="letra_hasta" type="s:string" />
+    <wsdl:part name="fecha" type="s:string" />
+    <wsdl:part name="wempresa" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerBalanceElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDatosBalance" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerBalanceElementoHttpPostIn">
+    <wsdl:part name="dia_desde" type="s:short" />
+    <wsdl:part name="mes_desde" type="s:short" />
+    <wsdl:part name="anio_desde" type="s:short" />
+    <wsdl:part name="dia_hasta" type="s:short" />
+    <wsdl:part name="mes_hasta" type="s:short" />
+    <wsdl:part name="anio_hasta" type="s:short" />
+    <wsdl:part name="codigo_cliente" type="s:short" />
+    <wsdl:part name="acepta_nombre" type="s:string" />
+  	<wsdl:part name="acepta_fecha" type="s:integer" />
+    <wsdl:part name="tipo_listado" type="s:short" />
+    <wsdl:part name="codigo_desde" type="s:short" />
+    <wsdl:part name="codigo_hasta" type="s:short" />
+    <wsdl:part name="zona_desde" type="s:short" />
+    <wsdl:part name="zona_hasta" type="s:short" />
+    <wsdl:part name="letra_desde" type="s:string" />
+    <wsdl:part name="letra_hasta" type="s:string" />
+  	<wsdl:part name="fecha" type="s:string" />
+  	<wsdl:part name="wempresa" type="s:short" />
+  	<wsdl:part name="tipo_trabajo" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerBalanceElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDatosBalance" />
+  </wsdl:message>
+  <wsdl:portType name="BalanceElementoSoap">
+    <wsdl:operation name="ObtenerBalanceElemento">
+      <wsdl:input message="tns:ObtenerBalanceElementoSoapIn" />
+      <wsdl:output message="tns:ObtenerBalanceElementoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BalanceElementoHttpGet">
+    <wsdl:operation name="ObtenerBalanceElemento">
+      <wsdl:input message="tns:ObtenerBalanceElementoHttpGetIn" />
+      <wsdl:output message="tns:ObtenerBalanceElementoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BalanceElementoHttpPost">
+    <wsdl:operation name="ObtenerBalanceElemento">
+      <wsdl:input message="tns:ObtenerBalanceElementoHttpPostIn" />
+      <wsdl:output message="tns:ObtenerBalanceElementoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BalanceElementoSoap" type="tns:BalanceElementoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerBalanceElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/ObtenerBalanceElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BalanceElementoSoap12" type="tns:BalanceElementoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerBalanceElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/ObtenerBalanceElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BalanceElementoHttpGet" type="tns:BalanceElementoHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ObtenerBalanceElemento">
+      <http:operation location="/ObtenerBalanceElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BalanceElementoHttpPost" type="tns:BalanceElementoHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ObtenerBalanceElemento">
+      <http:operation location="/ObtenerBalanceElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BalanceElemento">
+    <wsdl:port name="BalanceElementoSoap" binding="tns:BalanceElementoSoap">
+      <soap:address location="http://localhost:1390/BalanceElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BalanceElementoSoap12" binding="tns:BalanceElementoSoap12">
+      <soap12:address location="http://localhost:1390/BalanceElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BalanceElementoHttpGet" binding="tns:BalanceElementoHttpGet">
+      <http:address location="http://localhost:1390/BalanceElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BalanceElementoHttpPost" binding="tns:BalanceElementoHttpPost">
+      <http:address location="http://localhost:1390/BalanceElemento.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

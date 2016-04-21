@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="DarBajaElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha_elemento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dia_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="serie_factura" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="factura" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="secuencia" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="articulo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_libro_reten" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_libro_reten" type="s:integer" />
+            <s:element minOccurs="0" maxOccurs="1" name="acepta_tipo_calculo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="pagos" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="deduccion" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="retenciones" type="s:double" />
+
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DarBajaElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DarBajaElementoResult" type="tns:DatosBaja" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosBaja">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="bajaExitosa" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosBaja" nillable="true" type="tns:DatosBaja" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DarBajaElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:DarBajaElemento" />
+  </wsdl:message>
+  <wsdl:message name="DarBajaElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:DarBajaElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DarBajaElementoHttpGetIn">
+    <wsdl:part name="fecha_elemento" type="s:string" />
+    <wsdl:part name="dia_hasta" type="s:short" />
+    <wsdl:part name="mes_hasta" type="s:short" />
+    <wsdl:part name="anio_hasta" type="s:short" />
+    <wsdl:part name="serie_factura" type="s:short" />
+    <wsdl:part name="factura" type="s:integer" />
+    <wsdl:part name="secuencia" type="s:short" />
+    <wsdl:part name="articulo" type="s:short" />
+    <wsdl:part name="anio_libro_reten" type="s:short" />
+    <wsdl:part name="numero_libro_reten" type="s:integer" />
+    <wsdl:part name="acepta_tipo_calculo" type="s:short" />
+    <wsdl:part name="pagos" type="s:double" />
+    <wsdl:part name="deduccion" type="s:double" />
+    <wsdl:part name="retenciones" type="s:double" />
+  </wsdl:message>
+  <wsdl:message name="DarBajaElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosBaja" />
+  </wsdl:message>
+  <wsdl:message name="DarBajaElementoHttpPostIn">
+    <wsdl:part name="fecha_elemento" type="s:string" />
+    <wsdl:part name="dia_hasta" type="s:short" />
+    <wsdl:part name="mes_hasta" type="s:short" />
+    <wsdl:part name="anio_hasta" type="s:short" />
+    <wsdl:part name="serie_factura" type="s:short" />
+    <wsdl:part name="factura" type="s:integer" />
+    <wsdl:part name="secuencia" type="s:short" />
+    <wsdl:part name="articulo" type="s:short" />
+    <wsdl:part name="anio_libro_reten" type="s:short" />
+    <wsdl:part name="numero_libro_reten" type="s:integer" />
+    <wsdl:part name="acepta_tipo_calculo" type="s:short" />
+    <wsdl:part name="pagos" type="s:double" />
+    <wsdl:part name="deduccion" type="s:double" />
+    <wsdl:part name="retenciones" type="s:double" />
+  </wsdl:message>
+  <wsdl:message name="DarBajaElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosBaja" />
+  </wsdl:message>
+  <wsdl:portType name="BajaElementosSoap">
+    <wsdl:operation name="DarBajaElemento">
+      <wsdl:input message="tns:DarBajaElementoSoapIn" />
+      <wsdl:output message="tns:DarBajaElementoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BajaElementosHttpGet">
+    <wsdl:operation name="DarBajaElemento">
+      <wsdl:input message="tns:DarBajaElementoHttpGetIn" />
+      <wsdl:output message="tns:DarBajaElementoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BajaElementosHttpPost">
+    <wsdl:operation name="DarBajaElemento">
+      <wsdl:input message="tns:DarBajaElementoHttpPostIn" />
+      <wsdl:output message="tns:DarBajaElementoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BajaElementosSoap" type="tns:BajaElementosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DarBajaElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/DarBajaElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BajaElementosSoap12" type="tns:BajaElementosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DarBajaElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/DarBajaElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BajaElementosHttpGet" type="tns:BajaElementosHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="DarBajaElemento">
+      <http:operation location="/DarBajaElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BajaElementosHttpPost" type="tns:BajaElementosHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="DarBajaElemento">
+      <http:operation location="/DarBajaElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BajaElementos">
+    <wsdl:port name="BajaElementosSoap" binding="tns:BajaElementosSoap">
+      <soap:address location="http://localhost:1390/BajaElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BajaElementosSoap12" binding="tns:BajaElementosSoap12">
+      <soap12:address location="http://localhost:1390/BajaElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BajaElementosHttpGet" binding="tns:BajaElementosHttpGet">
+      <http:address location="http://localhost:1390/BajaElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BajaElementosHttpPost" binding="tns:BajaElementosHttpPost">
+      <http:address location="http://localhost:1390/BajaElementos.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,22 @@
+Minutos: 73.
+
+Lineas de codigo
+
+Antes: 2504
+Despues: 626
+
+Media: 1565
+
+PortTypes
+
+Antes: 18
+Despues: 3
+
+Media: 10.5
+
+ComplexTypes
+
+Antes: 108
+Despues: 18
+
+Media: 63
