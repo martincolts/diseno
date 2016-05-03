@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="LimpiarElementos">
+        <s:complexType>
+          <s:sequence>
+          	<s:element minOccurs="1" maxOccurs="1" name="dia" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LimpiarElementosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LimpiarElementosResult" type="tns:DatosCuentaCorriente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosCuentaCorriente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="borradoCorrecto" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosCuentaCorriente" nillable="true" type="tns:DatosCuentaCorriente" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LimpiarElementosSoapIn">
+    <wsdl:part name="parameters" element="tns:LimpiarElementos" />
+  </wsdl:message>
+  <wsdl:message name="LimpiarElementosSoapOut">
+    <wsdl:part name="parameters" element="tns:LimpiarElementosResponse" />
+  </wsdl:message>
+  <wsdl:message name="LimpiarElementosHttpGetIn">
+    <wsdl:part name="dia" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="LimpiarElementosHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosCuentaCorriente" />
+  </wsdl:message>
+  <wsdl:message name="LimpiarElementosHttpPostIn">
+    <wsdl:part name="dia" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="LimpiarElementosHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosCuentaCorriente" />
+  </wsdl:message>
+  <wsdl:portType name="LimpiezaElementosSoap">
+    <wsdl:operation name="LimpiarElementos">
+      <wsdl:input message="tns:LimpiarElementosSoapIn" />
+      <wsdl:output message="tns:LimpiarElementosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LimpiezaElementosHttpGet">
+    <wsdl:operation name="LimpiarElementos">
+      <wsdl:input message="tns:LimpiarElementosHttpGetIn" />
+      <wsdl:output message="tns:LimpiarElementosHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LimpiezaElementosHttpPost">
+    <wsdl:operation name="LimpiarElementos">
+      <wsdl:input message="tns:LimpiarElementosHttpPostIn" />
+      <wsdl:output message="tns:LimpiarElementosHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LimpiezaElementosSoap" type="tns:LimpiezaElementosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LimpiarElementos">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/LimpiarElementos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LimpiezaElementosSoap12" type="tns:LimpiezaElementosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LimpiarElementos">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/LimpiarElementos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LimpiezaElementosHttpGet" type="tns:LimpiezaElementosHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="LimpiarElementos">
+      <http:operation location="/LimpiarElementos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LimpiezaElementosHttpPost" type="tns:LimpiezaElementosHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="LimpiarElementos">
+      <http:operation location="/LimpiarElementos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LimpiezaElementos">
+    <wsdl:port name="LimpiezaElementosSoap" binding="tns:LimpiezaElementosSoap">
+      <soap:address location="http://localhost:1390/LimpiezaElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LimpiezaElementosSoap12" binding="tns:LimpiezaElementosSoap12">
+      <soap12:address location="http://localhost:1390/LimpiezaElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LimpiezaElementosHttpGet" binding="tns:LimpiezaElementosHttpGet">
+      <http:address location="http://localhost:1390/LimpiezaElementos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LimpiezaElementosHttpPost" binding="tns:LimpiezaElementosHttpPost">
+      <http:address location="http://localhost:1390/LimpiezaElementos.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

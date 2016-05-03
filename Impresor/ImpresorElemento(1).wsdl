@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="ObtenerListadoElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="desde_numero" type="s:integer" />
+            <s:element minOccurs="1" maxOccurs="1" name="hasta_numero" type="s:integer" />
+            <s:element minOccurs="1" maxOccurs="1" name="desde_cliente" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="hasta_cliente" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia_desde_vencimiento" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="mes_desde_vencimiento" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="anio_desde_vencimiento" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia_hasta_vencimiento" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="mes_hasta_vencimiento" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="anio_hasta_vencimiento" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo_listado" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_desde" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona_desde" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona_hasta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="letra_desde" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="letra_hasta" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cosecha" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerListadoElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerListadoElementoResult" type="tns:ArrayOfDatosElemento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDatosElemento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DatosElemento" nillable="true" type="tns:DatosElemento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DatosElemento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="numero" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="dia_vencimiento" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="mes_vencimiento" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="anio_vencimiento" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dia_firma" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="mes_firma" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="anio_firma" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cobrado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mes" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="tabla_movimiento" type="tns:Tabla" />
+          <s:element minOccurs="0" maxOccurs="1" name="kilos_comprados" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="precio_promedio" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tabla">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cantidad" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="precio" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="promedio" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfDatosElemento" nillable="true" type="tns:ArrayOfDatosElemento" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerListadoElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerListadoElemento" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerListadoElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoElementoHttpGetIn">
+    <wsdl:part name="desde_numero" type="s:integer" />
+    <wsdl:part name="hasta_numero" type="s:integer" />
+    <wsdl:part name="desde_cliente" type="s:short" />
+    <wsdl:part name="hasta_cliente" type="s:short" />
+    <wsdl:part name="dia_desde_vencimiento" type="s:short" />
+    <wsdl:part name="mes_desde_vencimiento" type="s:short" />
+    <wsdl:part name="anio_desde_vencimiento" type="s:short" />
+    <wsdl:part name="dia_hasta_vencimiento" type="s:short" />
+    <wsdl:part name="mes_hasta_vencimiento" type="s:short" />
+    <wsdl:part name="anio_hasta_vencimiento" type="s:short" />
+    <wsdl:part name="tipo_listado" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="codigo_desde" type="s:short" />
+    <wsdl:part name="codigo_hasta" type="s:short" />
+    <wsdl:part name="zona_desde" type="s:short" />
+    <wsdl:part name="zona_hasta" type="s:short" />
+    <wsdl:part name="letra_desde" type="s:string" />
+    <wsdl:part name="letra_hasta" type="s:string" />
+    <wsdl:part name="cosecha" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDatosElemento" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoElementoHttpPostIn">
+    <wsdl:part name="desde_numero" type="s:integer" />
+    <wsdl:part name="hasta_numero" type="s:integer" />
+    <wsdl:part name="desde_cliente" type="s:short" />
+    <wsdl:part name="hasta_cliente" type="s:short" />
+    <wsdl:part name="dia_desde_vencimiento" type="s:short" />
+    <wsdl:part name="mes_desde_vencimiento" type="s:short" />
+    <wsdl:part name="anio_desde_vencimiento" type="s:short" />
+    <wsdl:part name="dia_hasta_vencimiento" type="s:short" />
+    <wsdl:part name="mes_hasta_vencimiento" type="s:short" />
+    <wsdl:part name="anio_hasta_vencimiento" type="s:short" />
+    <wsdl:part name="tipo_listado" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="codigo_desde" type="s:short" />
+    <wsdl:part name="codigo_hasta" type="s:short" />
+    <wsdl:part name="zona_desde" type="s:short" />
+    <wsdl:part name="zona_hasta" type="s:short" />
+    <wsdl:part name="letra_desde" type="s:string" />
+    <wsdl:part name="letra_hasta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDatosElemento" />
+  </wsdl:message>
+  <wsdl:portType name="ImpresorElementoSoap">
+    <wsdl:operation name="ObtenerListadoElemento">
+      <wsdl:input message="tns:ObtenerListadoElementoSoapIn" />
+      <wsdl:output message="tns:ObtenerListadoElementoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ImpresorElementoHttpGet">
+    <wsdl:operation name="ObtenerListadoElemento">
+      <wsdl:input message="tns:ObtenerListadoElementoHttpGetIn" />
+      <wsdl:output message="tns:ObtenerListadoElementoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ImpresorElementoHttpPost">
+    <wsdl:operation name="ObtenerListadoElemento">
+      <wsdl:input message="tns:ObtenerListadoElementoHttpPostIn" />
+      <wsdl:output message="tns:ObtenerListadoElementoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ImpresorElementoSoap" type="tns:ImpresorElementoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerListadoElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/ObtenerListadoElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ImpresorElementoSoap12" type="tns:ImpresorElementoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerListadoElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/ObtenerListadoElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ImpresorElementoHttpGet" type="tns:ImpresorElementoHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ObtenerListadoElemento">
+      <http:operation location="/ObtenerListadoElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ImpresorElementoHttpPost" type="tns:ImpresorElementoHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ObtenerListadoElemento">
+      <http:operation location="/ObtenerListadoElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImpresorElemento">
+    <wsdl:port name="ImpresorElementoSoap" binding="tns:ImpresorElementoSoap">
+      <soap:address location="http://localhost:1390/ImpresorElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ImpresorElementoSoap12" binding="tns:ImpresorElementoSoap12">
+      <soap12:address location="http://localhost:1390/ImpresorElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ImpresorElementoHttpGet" binding="tns:ImpresorElementoHttpGet">
+      <http:address location="http://localhost:1390/ImpresorElemento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ImpresorElementoHttpPost" binding="tns:ImpresorElementoHttpPost">
+      <http:address location="http://localhost:1390/ImpresorElemento.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
