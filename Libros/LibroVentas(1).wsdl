@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="ObtenerListadoLibron">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="wempresa" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="acepta_mes_anio" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerListadoLibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerListadoLibronResult" type="tns:ArrayOfDatosVentaPorImputacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDatosVentaPorImputacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DatosVentaPorImputacion" nillable="true" type="tns:DatosVentaPorImputacion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DatosVentaPorImputacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="capitulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sub_capitulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="rubro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sub_rubro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="denominacion_cuenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nro_iva" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo_comp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="serie_factura" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="letra_factura" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nro_factura" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="total" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfDatosVentaPorImputacion" nillable="true" type="tns:ArrayOfDatosVentaPorImputacion" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerListadoLibronSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerListadoLibron" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoLibronSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerListadoLibronResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoLibronHttpGetIn">
+    <wsdl:part name="wempresa" type="s:short" />
+    <wsdl:part name="cuenta" type="s:short" />
+    <wsdl:part name="acepta_mes_anio" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoLibronHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDatosVentaPorImputacion" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoLibronHttpPostIn">
+    <wsdl:part name="wempresa" type="s:short" />
+    <wsdl:part name="cuenta" type="s:short" />
+    <wsdl:part name="acepta_mes_anio" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoLibronHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDatosVentaPorImputacion" />
+  </wsdl:message>
+  <wsdl:portType name="LibronAPedidoSalidaExcelSoap">
+    <wsdl:operation name="ObtenerListadoLibron">
+      <wsdl:input message="tns:ObtenerListadoLibronSoapIn" />
+      <wsdl:output message="tns:ObtenerListadoLibronSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LibronAPedidoSalidaExcelHttpGet">
+    <wsdl:operation name="ObtenerListadoLibron">
+      <wsdl:input message="tns:ObtenerListadoLibronHttpGetIn" />
+      <wsdl:output message="tns:ObtenerListadoLibronHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LibronAPedidoSalidaExcelHttpPost">
+    <wsdl:operation name="ObtenerListadoLibron">
+      <wsdl:input message="tns:ObtenerListadoLibronHttpPostIn" />
+      <wsdl:output message="tns:ObtenerListadoLibronHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LibronAPedidoSalidaExcelSoap" type="tns:LibronAPedidoSalidaExcelSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerListadoLibron">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/ObtenerListadoLibron" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LibronAPedidoSalidaExcelSoap12" type="tns:LibronAPedidoSalidaExcelSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerListadoLibron">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/ObtenerListadoLibron" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LibronAPedidoSalidaExcelHttpGet" type="tns:LibronAPedidoSalidaExcelHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ObtenerListadoLibron">
+      <http:operation location="/ObtenerListadoLibron" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LibronAPedidoSalidaExcelHttpPost" type="tns:LibronAPedidoSalidaExcelHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ObtenerListadoLibron">
+      <http:operation location="/ObtenerListadoLibron" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LibronAPedidoSalidaExcel">
+    <wsdl:port name="LibronAPedidoSalidaExcelSoap" binding="tns:LibronAPedidoSalidaExcelSoap">
+      <soap:address location="http://localhost:1390/LibronAPedidoSalidaExcel.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LibronAPedidoSalidaExcelSoap12" binding="tns:LibronAPedidoSalidaExcelSoap12">
+      <soap12:address location="http://localhost:1390/LibronAPedidoSalidaExcel.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LibronAPedidoSalidaExcelHttpGet" binding="tns:LibronAPedidoSalidaExcelHttpGet">
+      <http:address location="http://localhost:1390/LibronAPedidoSalidaExcel.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LibronAPedidoSalidaExcelHttpPost" binding="tns:LibronAPedidoSalidaExcelHttpPost">
+      <http:address location="http://localhost:1390/LibronAPedidoSalidaExcel.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
