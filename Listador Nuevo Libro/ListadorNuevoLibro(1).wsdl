@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="ObtenerListadoNuevoLibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tipo_listado" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="iva_basico" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="iva_adicional" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="cuenta_hojas" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona_desde" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="zona_hasta" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerListadoNuevoLibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerListadoNuevoLibroResult" type="tns:ArrayOfDatosLibro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDatosLibro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DatosLibro" nillable="true" type="tns:DatosLibro" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DatosLibro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="condicion_iva" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="zona" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="numero_recibo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe_neto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="iva_basico" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="iva_adicional" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe_total" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="importe_descuento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="importe_neto" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfDatosLibro" nillable="true" type="tns:ArrayOfDatosLibro" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerListadoNuevoLibroSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerListadoNuevoLibro" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoNuevoLibroSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerListadoNuevoLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoNuevoLibroHttpGetIn">
+    <wsdl:part name="iva_basico" type="s:float" />
+    <wsdl:part name="iva_adicional" type="s:float" />
+    <wsdl:part name="tipo_listado" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="cuenta_hojas" type="s:short" />
+    <wsdl:part name="zona_desde" type="s:short" />
+    <wsdl:part name="zona_hasta" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoNuevoLibroHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDatosLibro" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoNuevoLibroHttpPostIn">
+    <wsdl:part name="iva_basico" type="s:float" />
+    <wsdl:part name="iva_adicional" type="s:float" />
+    <wsdl:part name="tipo_listado" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="cuenta_hojas" type="s:short" />
+    <wsdl:part name="zona_desde" type="s:short" />
+    <wsdl:part name="zona_hasta" type="s:short" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerListadoNuevoLibroHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDatosLibro" />
+  </wsdl:message>
+  <wsdl:portType name="ListadorNuevoLibroSoap">
+    <wsdl:operation name="ObtenerListadoNuevoLibro">
+      <wsdl:input message="tns:ObtenerListadoNuevoLibroSoapIn" />
+      <wsdl:output message="tns:ObtenerListadoNuevoLibroSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ListadorNuevoLibroHttpGet">
+    <wsdl:operation name="ObtenerListadoNuevoLibro">
+      <wsdl:input message="tns:ObtenerListadoNuevoLibroHttpGetIn" />
+      <wsdl:output message="tns:ObtenerListadoNuevoLibroHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ListadorNuevoLibroHttpPost">
+    <wsdl:operation name="ObtenerListadoNuevoLibro">
+      <wsdl:input message="tns:ObtenerListadoNuevoLibroHttpPostIn" />
+      <wsdl:output message="tns:ObtenerListadoNuevoLibroHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ListadorNuevoLibroSoap" type="tns:ListadorNuevoLibroSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerListadoNuevoLibro">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/ObtenerListadoNuevoLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ListadorNuevoLibroSoap12" type="tns:ListadorNuevoLibroSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerListadoNuevoLibro">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/ObtenerListadoNuevoLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ListadorNuevoLibroHttpGet" type="tns:ListadorNuevoLibroHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ObtenerListadoNuevoLibro">
+      <http:operation location="/ObtenerListadoNuevoLibro" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ListadorNuevoLibroHttpPost" type="tns:ListadorNuevoLibroHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ObtenerListadoNuevoLibro">
+      <http:operation location="/ObtenerListadoNuevoLibro" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ListadorNuevoLibro">
+    <wsdl:port name="ListadorNuevoLibroSoap" binding="tns:ListadorNuevoLibroSoap">
+      <soap:address location="http://localhost:1390/ListadorNuevoLibro.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ListadorNuevoLibroSoap12" binding="tns:ListadorNuevoLibroSoap12">
+      <soap12:address location="http://localhost:1390/ListadorNuevoLibro.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ListadorNuevoLibroHttpGet" binding="tns:ListadorNuevoLibroHttpGet">
+      <http:address location="http://localhost:1390/ListadorNuevoLibro.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ListadorNuevoLibroHttpPost" binding="tns:ListadorNuevoLibroHttpPost">
+      <http:address location="http://localhost:1390/ListadorNuevoLibro.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
