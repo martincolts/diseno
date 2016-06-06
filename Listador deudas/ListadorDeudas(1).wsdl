@@ -62,7 +62,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="tipo_comprobante" type="s:short" />
           <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:integer" />
           <s:element minOccurs="0" maxOccurs="1" name="codigo_cliente" type="s:short" />
-          <s:element minOccurs="0" maxOccurs="1" name=
+          <s:element minOccurs="0" maxOccurs="1" name="haber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="neto_haber" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="nombre_articulo" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="bruto" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="impuestos" type="s:string" />
@@ -79,6 +80,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="saldo_debe" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="saldo_anterior_debe" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="saldo_debe_total" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_haber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="saldo_anterior_haber" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="ArrayOfDatosChequesRechazados" nillable="true" type="tns:ArrayOfDatosChequesRechazados" />

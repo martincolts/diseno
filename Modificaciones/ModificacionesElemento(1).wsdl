@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:tns="http://molinosbalcarce.com.ar" xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	targetNamespace="http://molinosbalcarce.com.ar" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://molinosbalcarce.com.ar">
+      <s:element name="ModificarElemento">
+        <s:complexType>
+          <s:sequence>
+          	<s:element minOccurs="1" maxOccurs="1" name="indice" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="comision" type="s:float" />
+          	<s:element minOccurs="0" maxOccurs="1" name="saldo" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="dia_saldo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes_saldo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio_saldo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="hoja" type="s:integer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarElementoResult" type="tns:DatosElemento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosElemento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="modificacionCorrecta" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosElemento" nillable="true" type="tns:DatosElemento" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ModificarElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarElemento" />
+  </wsdl:message>
+  <wsdl:message name="ModificarElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarElementoHttpGetIn">
+    <wsdl:part name="indice" type="s:short" />
+    <wsdl:part name="comision" type="s:float" />
+    <wsdl:part name="saldo" type="s:double" />
+    <wsdl:part name="dia_saldo" type="s:short" />
+    <wsdl:part name="mes_saldo" type="s:short" />
+    <wsdl:part name="anio_saldo" type="s:short" />
+    <wsdl:part name="hoja" type="s:integer" />
+  </wsdl:message>
+  <wsdl:message name="ModificarElementoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosElemento" />
+  </wsdl:message>
+  <wsdl:message name="ModificarElementoHttpPostIn">
+    <wsdl:part name="indice" type="s:short" />
+    <wsdl:part name="comision" type="s:float" />
+    <wsdl:part name="saldo" type="s:double" />
+    <wsdl:part name="dia_saldo" type="s:short" />
+    <wsdl:part name="mes_saldo" type="s:short" />
+    <wsdl:part name="anio_saldo" type="s:short" />
+    <wsdl:part name="hoja" type="s:integer" />
+  </wsdl:message>
+  <wsdl:message name="ModificarElementoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosElemento" />
+  </wsdl:message>
+  <wsdl:portType name="ModificacionesElementoesSoap">
+    <wsdl:operation name="ModificarElemento">
+      <wsdl:input message="tns:ModificarElementoSoapIn" />
+      <wsdl:output message="tns:ModificarElementoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ModificacionesElementoesHttpGet">
+    <wsdl:operation name="ModificarElemento">
+      <wsdl:input message="tns:ModificarElementoHttpGetIn" />
+      <wsdl:output message="tns:ModificarElementoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ModificacionesElementoesHttpPost">
+    <wsdl:operation name="ModificarElemento">
+      <wsdl:input message="tns:ModificarElementoHttpPostIn" />
+      <wsdl:output message="tns:ModificarElementoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ModificacionesElementoesSoap" type="tns:ModificacionesElementoesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ModificarElemento">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/ModificarElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ModificacionesElementoesSoap12" type="tns:ModificacionesElementoesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ModificarElemento">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/ModificarElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ModificacionesElementoesHttpGet" type="tns:ModificacionesElementoesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ModificarElemento">
+      <http:operation location="/ModificarElemento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ModificacionesElementoesHttpPost" type="tns:ModificacionesElementoesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ModificarElemento">
+      <http:operation location="/ModificarElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ModificacionesElementoes">
+    <wsdl:port name="ModificacionesElementoesSoap" binding="tns:ModificacionesElementoesSoap">
+      <soap:address location="http://localhost:1390/ModificacionesElementoes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ModificacionesElementoesSoap12" binding="tns:ModificacionesElementoesSoap12">
+      <soap12:address location="http://localhost:1390/ModificacionesElementoes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ModificacionesElementoesHttpGet" binding="tns:ModificacionesElementoesHttpGet">
+      <http:address location="http://localhost:1390/ModificacionesElementoes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ModificacionesElementoesHttpPost" binding="tns:ModificacionesElementoesHttpPost">
+      <http:address location="http://localhost:1390/ModificacionesElementoes.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

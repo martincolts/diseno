@@ -11,6 +11,7 @@
       <s:element name="AltaElemento">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cuenta" type="s:short" />
             <s:element minOccurs="1" maxOccurs="1" name="codigo_cliente" type="s:short" />
             <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:integer" />
             <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
@@ -21,6 +22,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="arma_numero" type="s:long" />
             <s:element minOccurs="0" maxOccurs="1" name="desde_talonario" type="s:long" />
             <s:element minOccurs="0" maxOccurs="1" name="hasta_talonario" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="importe" type="s:double" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -40,6 +42,7 @@
       <s:element name="BajaElemento">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cuenta" type="s:short" />
             <s:element minOccurs="1" maxOccurs="1" name="codigo_cliente" type="s:short" />
             <s:element minOccurs="0" maxOccurs="1" name="numero_comprobante" type="s:integer" />
             <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
@@ -47,6 +50,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
             <s:element minOccurs="0" maxOccurs="1" name="desde_talonario" type="s:long" />
             <s:element minOccurs="0" maxOccurs="1" name="hasta_talonario" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:long" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -54,6 +58,37 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="BajaElementoResult" type="tns:DatosBaja" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+<s:element name="UtilizacionInterdepositoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UtilizacionInterdepositoResult" type="tns:DatosUtilizacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DatosUtilizacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="modificacionExitosa" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatosUtilizacion" nillable="true" type="tns:DatosUtilizacion" />
+      <s:element name="BajaInterdeposito">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cuenta" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaInterdepositoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BajaInterdepositoResult" type="tns:DatosBaja" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -74,6 +109,7 @@
   <wsdl:message name="AltaElementoHttpGetIn">
     <wsdl:part name="codigo_cliente" type="s:short" />
     <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="cuenta" type="s:short" />
     <wsdl:part name="dia" type="s:short" />
     <wsdl:part name="mes" type="s:short" />
     <wsdl:part name="anio" type="s:short" />
@@ -82,6 +118,7 @@
     <wsdl:part name="arma_numero" type="s:long" />
     <wsdl:part name="desde_talonario" type="s:long" />
     <wsdl:part name="hasta_talonario" type="s:long" />
+    <wsdl:part name="importe" type="s:double" />
   </wsdl:message>
   <wsdl:message name="AltaElementoHttpGetOut">
     <wsdl:part name="Body" element="tns:DatosAlta" />
@@ -89,6 +126,7 @@
   <wsdl:message name="AltaElementoHttpPostIn">
     <wsdl:part name="codigo_cliente" type="s:short" />
     <wsdl:part name="numero_comprobante" type="s:integer" />
+    <wsdl:part name="cuenta" type="s:short" />
     <wsdl:part name="dia" type="s:short" />
     <wsdl:part name="mes" type="s:short" />
     <wsdl:part name="anio" type="s:short" />
@@ -97,6 +135,7 @@
     <wsdl:part name="arma_numero" type="s:long" />
     <wsdl:part name="desde_talonario" type="s:long" />
     <wsdl:part name="hasta_talonario" type="s:long" />
+    <wsdl:part name="importe" type="s:double" />
   </wsdl:message>
   <wsdl:message name="AltaElementoHttpPostOut">
     <wsdl:part name="Body" element="tns:DatosAlta" />
@@ -116,6 +155,33 @@
     <wsdl:part name="desde_talonario" type="s:long" />
     <wsdl:part name="hasta_talonario" type="s:long" />
   </wsdl:message>
+<wsdl:message name="UtilizacionInterdepositoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DatosUtilizacion" />
+  </wsdl:message>
+  <wsdl:message name="UtilizacionInterdepositoHttpPostIn">
+    <wsdl:part name="cuenta" type="s:short" />
+    <wsdl:part name="dia" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="numero" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="UtilizacionInterdepositoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DatosUtilizacion" />
+  </wsdl:message>
+   <wsdl:message name="BajaInterdepositoSoapIn">
+    <wsdl:part name="parameters" element="tns:BajaInterdeposito" />
+  </wsdl:message>
+  <wsdl:message name="BajaInterdepositoSoapOut">
+    <wsdl:part name="parameters" element="tns:BajaInterdepositoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BajaInterdepositoHttpGetIn">
+    <wsdl:part name="cuenta" type="s:short" />
+    <wsdl:part name="dia" type="s:short" />
+    <wsdl:part name="mes" type="s:short" />
+    <wsdl:part name="anio" type="s:short" />
+    <wsdl:part name="numero" type="s:long" />
+  </wsdl:message>
+
   <wsdl:message name="BajaElementoHttpGetOut">
     <wsdl:part name="Body" element="tns:DatosBaja" />
   </wsdl:message>
@@ -172,6 +238,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+<wsdl:operation name="UtilizacionInterdeposito">
+      <soap:operation soapAction="http://molinosbalcarce.com.ar/UtilizacionInterdeposito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="BajaElemento">
       <soap:operation soapAction="http://molinosbalcarce.com.ar/BajaElemento" style="document" />
       <wsdl:input>
@@ -186,6 +261,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AltaElemento">
       <soap12:operation soapAction="http://molinosbalcarce.com.ar/AltaElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+<wsdl:operation name="UtilizacionInterdeposito">
+      <soap12:operation soapAction="http://molinosbalcarce.com.ar/UtilizacionInterdeposito" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -214,6 +298,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UtilizacionInterdeposito">
+      <http:operation location="/UtilizacionInterdeposito" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="BajaElemento">
       <http:operation location="/BajaElemento" />
       <wsdl:input>
@@ -228,6 +321,15 @@
     <http:binding verb="POST" />
     <wsdl:operation name="AltaElemento">
       <http:operation location="/AltaElemento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UtilizacionInterdeposito">
+      <http:operation location="/UtilizacionInterdeposito" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
