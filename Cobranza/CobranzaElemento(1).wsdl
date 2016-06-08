@@ -39,6 +39,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="importe_cobros" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="importe_cheques" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="importe_neto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:short" />
           <s:element minOccurs="0" maxOccurs="1" name="dia" type="s:short" />
           <s:element minOccurs="0" maxOccurs="1" name="mes" type="s:short" />
           <s:element minOccurs="0" maxOccurs="1" name="anio" type="s:short" />
